@@ -59,7 +59,7 @@ func (s *jwtServices) CreateToken(Username string, isUser bool) string {
 	// pass payloader and header here ... claims
 	token := jwt.NewWithClaims(jwt.SigningMethodHS256, claims)
 
-	// encoded string is ...signed token using secretkey
+	// BASE64 encoded string is ...signed token using secretkey
 	t, err := token.SignedString([]byte(s.secretKey))
 	if err != nil {
 		panic(err)

@@ -2,6 +2,6 @@ package dto
 
 //LoginCredentials ..
 type LoginCredentials struct {
-	Email    string `form:"email"`
+	Username string `form:"email"`
 	Password string `form:"password"`
 }
