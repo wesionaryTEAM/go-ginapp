@@ -22,14 +22,14 @@ var router = gin.Default()
 
 //StartApp is ...
 func StartApp() {
-
+	dbdriver := os.Getenv("DB_DRIVER")
 	username := os.Getenv("DB_USER")
 	password := os.Getenv("DB_PASSWORD")
 	host := os.Getenv("DB_HOST")
 	database := os.Getenv("DB_NAME")
 	dbport := os.Getenv("DB_PORT")
 
-	_, err := model.Model.Initialize(username, password, dbport, host, database)
+	_, err := model.Model.Initialize(dbdriver, username, password, dbport, host, database)
 	if err != nil {
 		log.Fatal("Error connecting to the database: ", err)
 	}

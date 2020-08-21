@@ -19,6 +19,8 @@ type AuthDetails struct {
 
 //CreateToken is ...
 func CreateToken(authD AuthDetails) (string, error) {
+
+	os.Setenv("API_SECRET", "$@$sl@??") //this should be in an env file
 	claims := jwt.MapClaims{}
 	claims["authorized"] = true
 	claims["auth_uuid"] = authD.AuthUuid

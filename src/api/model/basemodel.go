@@ -24,7 +24,7 @@ var (
 
 type modelInterface interface {
 	//db initialization
-	Initialize(DbUser, DbPassword, DbPort, DbHost, DbName string) (*gorm.DB, error)
+	Initialize(Dbdriver, DbUser, DbPassword, DbPort, DbHost, DbName string) (*gorm.DB, error)
 
 	//user methods
 	ValidateEmail(string) error
@@ -41,10 +41,10 @@ type modelInterface interface {
 }
 
 //Initialize is ...
-func (s *Server) Initialize(DbUser, DbPassword, DbPort, DbHost, DbName string) (*gorm.DB, error) {
+func (s *Server) Initialize(Dbdriver, DbUser, DbPassword, DbPort, DbHost, DbName string) (*gorm.DB, error) {
 	var err error
 	DBURL := fmt.Sprintf("host=%s port=%s user=%s dbname=%s/ sslmode=disable password=%s", DbHost, DbPort, DbUser, DbName, DbPassword)
-	s.DB, err = gorm.Open("mysql", DBURL)
+	s.DB, err = gorm.Open(Dbdriver, DBURL)
 	if err != nil {
 		return nil, err
 	}
