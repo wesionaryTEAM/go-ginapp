@@ -34,11 +34,11 @@ func (s *Server) DeleteAuth(authD *auth.AuthDetails) error {
 }
 
 //CreateAuth is ...Once the user signup/login, create a row in the auth table, with a new uuid
-func (s *Server) CreateAuth(userId uint64) (*Auth, error) {
+func (s *Server) CreateAuth(userID uint64) (*Auth, error) {
 	au := &Auth{}
 	//generate a new UUID each time
 	au.AuthUUID = uuid.NewV4().String()
-	au.UserID = userId
+	au.UserID = userID
 	err := s.DB.Debug().Create(&au).Error
 	if err != nil {
 		return nil, err

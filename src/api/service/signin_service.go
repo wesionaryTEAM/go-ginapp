@@ -2,7 +2,7 @@ package service
 
 import "go-ginapp/auth"
 
-//because i will mock signin in the future while writing test cases, it will be defined in an interface:
+// it will be defined in an interface:
 type sigInInterface interface {
 	SignIn(auth.AuthDetails) (string, error)
 }
